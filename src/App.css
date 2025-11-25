@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    color: #f9fafb;
+}
+
+.homeCards {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 60px;
+    gap: 24px 16px;
+    /* dikey 24px, yatay 16px boşluk */
+    margin: 40px;
+    /* sayfanın kenarlarından boşluk */
+}

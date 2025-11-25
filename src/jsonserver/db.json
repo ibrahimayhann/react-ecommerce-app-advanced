@@ -1,0 +1,57 @@
+{
+  "users": [
+    {
+      "username": "ihali",
+      "password": "1",
+      "id": "f223"
+    },
+    {
+      "id": "0f39",
+      "username": "ihali@gmail.com",
+      "password": "1"
+    },
+    {
+      "id": "f36d",
+      "username": "ihalilayhan1@gmail.com",
+      "password": "a"
+    },
+    {
+      "id": "aa17",
+      "username": "ihalilayhan1@gmail.com",
+      "password": "a"
+    },
+    {
+      "id": "34df",
+      "username": "asda@gmail.com",
+      "password": "1"
+    },
+    {
+      "id": "db52",
+      "username": "ihalilayhan1@gmail.com",
+      "password": "nnn"
+    },
+    {
+      "id": "5454",
+      "username": "ihalilayhan1@gmail.com",
+      "password": "a"
+    },
+    {
+      "id": "9448",
+      "username": "ihalilayhan1@gmail.com",
+      "password": "c",
+      "balance": 1000
+    },
+    {
+      "id": "2889",
+      "username": "ihalilayhan1@gmail.com",
+      "password": "tt",
+      "balance": 1000
+    },
+    {
+      "id": "2138",
+      "username": "ihalilayhan1@gmail.com",
+      "password": "xx",
+      "balance": 1000
+    }
+  ]
+}
