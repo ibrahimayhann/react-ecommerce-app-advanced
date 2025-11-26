@@ -1,8 +1,6 @@
-import React from 'react'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
@@ -13,23 +11,20 @@ interface ProductCardProps {
 }
 
 function ProductCard(props: ProductCardProps) {
-
-    const { id, title, price, description, category, image, rating } = props.product;
-
+    const { title, price, description, image } = props.product;
 
     return (
         <Card
             sx={{
-                width: 320,
-                height: 400,
+                width: 330,
+                height: 440,
                 borderRadius: 5,
                 overflow: "hidden",
                 backgroundColor: "#ffffff",
                 cursor: "pointer",
                 transition: "all 0.25s ease",
                 display: "flex",
-                flexDirection: "column",    // dikey hizalama
-                justifyContent: "space-between", // üstte foto, ortada info, altta buton
+                flexDirection: "column",         // sadece kolon olsun
                 boxShadow: "0 4px 10px rgba(0,0,0,0.08)",
                 border: "1px solid transparent",
                 "&:hover": {
@@ -39,10 +34,16 @@ function ProductCard(props: ProductCardProps) {
                 },
             }}
         >
-            <img src={image} width={260} height={200} style={{
-                objectFit: "contain", marginLeft: "auto",
-                marginRight: "auto",
-            }} />
+            <img
+                src={image}
+                width={260}
+                height={200}
+                style={{
+                    objectFit: "contain",
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                }}
+            />
 
             <CardContent sx={{ flexGrow: 1 }}>
                 <Typography
@@ -56,6 +57,7 @@ function ProductCard(props: ProductCardProps) {
                         overflow: "hidden",
                         fontWeight: 600,
                         fontSize: 14,
+                        minHeight: "40px",          // başlık yüksekliği sabit
                     }}
                 >
                     {title}
@@ -68,21 +70,33 @@ function ProductCard(props: ProductCardProps) {
                         WebkitLineClamp: 3,
                         WebkitBoxOrient: "vertical",
                         overflow: "hidden",
-                        color: "text.secondary"
+                        color: "text.secondary",
+                        minHeight: "60px",          // açıklama yüksekliği sabit
                     }}
                 >
                     {description}
                 </Typography>
+
+                <div>
+                    <p>Fiyat: {price} ₺</p>
+                </div>
             </CardContent>
 
-            <CardActions sx={{ padding: "10px", justifyContent: "center" }}>
+
+            <CardActions
+                sx={{
+                    justifyContent: "center",
+                    mt: "auto",      // yukarıdaki alan ne olursa olsun bunu en alta iter
+                    mb: 1,           // kartın altından hafif boşluk
+                    pt: 0,
+                }}
+            >
                 <Button size="small" variant="outlined" color="info">
                     Detay
                 </Button>
             </CardActions>
         </Card>
-
-    )
+    );
 }
 
-export default ProductCard
+export default ProductCard;
