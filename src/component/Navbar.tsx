@@ -11,10 +11,12 @@ import SearchIcon from '@mui/icons-material/Search';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setCurrentUser } from '../redux/appSlice';
+import { filterProduct, setCurrentUser, setProducts } from '../redux/appSlice';
 import { toast } from 'react-toastify';
 import { MdShoppingCart } from "react-icons/md";
 import homeicon from '../images/homeicon.png'
+import ProductService from '../services/ProductService';
+import type { ProductType } from '../types/Types';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -73,6 +75,21 @@ function Navbar() {
         navigate("/")
     }
 
+    const handleFilter = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        try {
+            if (e.target.value) {
+                //Filtrelem yap
+                dispatch(filterProduct(e.target.value))
+            } else {
+                //Tüm ürünleri göster
+                const response: ProductType[] = await ProductService.getAllProducts();
+                dispatch(setProducts(response));
+            }
+        } catch (error) {
+            toast.error("Filtreleme yapılamadı :" + error);
+        }
+    }
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static" sx={{ backgroundColor: "#340e0eff" }}>
@@ -95,11 +112,12 @@ function Navbar() {
                     >
                         E-COMMERCE
                     </Typography>
-                    <Search>
+                    <Search onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleFilter(e)}>
                         <SearchIconWrapper>
                             <SearchIcon />
                         </SearchIconWrapper>
                         <StyledInputBase
+
                             placeholder="Search…"
                             inputProps={{ 'aria-label': 'search' }}
                         />

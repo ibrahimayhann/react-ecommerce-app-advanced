@@ -8,6 +8,7 @@ import Navbar from './component/Navbar';
 import { useSelector } from 'react-redux';
 import type { RootState } from './redux/store';
 
+
 function App() {
 
   const { currentUser } = useSelector((state: RootState) => state.app);
