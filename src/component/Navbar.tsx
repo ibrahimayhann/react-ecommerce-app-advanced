@@ -1,4 +1,3 @@
-import React from 'react'
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -6,17 +5,20 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { filterProduct, setCurrentUser, setProducts } from '../redux/appSlice';
 import { toast } from 'react-toastify';
 import { MdShoppingCart } from "react-icons/md";
 import homeicon from '../images/homeicon.png'
 import ProductService from '../services/ProductService';
 import type { ProductType } from '../types/Types';
+import Badge from '@mui/material/Badge';
+import type { RootState } from '../redux/store';
+import { handleDrawer } from '../redux/basketSlice';
+
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -62,6 +64,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 
 function Navbar() {
+
+    const basketItems = useSelector(
+        (state: RootState) => state.basket.basketItems
+    );
+
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -75,6 +83,9 @@ function Navbar() {
         navigate("/")
     }
 
+    const drawerControl = () => {
+        dispatch(handleDrawer())
+    }
     const handleFilter = async (e: React.ChangeEvent<HTMLInputElement>) => {
         try {
             if (e.target.value) {
@@ -122,7 +133,10 @@ function Navbar() {
                             inputProps={{ 'aria-label': 'search' }}
                         />
                     </Search>
-                    <MdShoppingCart style={{ marginLeft: "9px", cursor: "pointer" }} />
+                    <Badge badgeContent={basketItems.length} color='warning'>
+                        <MdShoppingCart onClick={drawerControl} style={{ marginLeft: "9px", cursor: "pointer", marginRight: '6px' }} />
+
+                    </Badge>
 
                     <Button color="inherit" onClick={handleLogout} sx={{ ml: 2 }}>
                         Logout

@@ -1,0 +1,221 @@
+.size-btn {
+    padding: 6px 12px;
+    margin: auto;
+    font-size: 30px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border: none;
+
+}
+
+.size-btn-margin {
+    margin: 4px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background-color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.size-btn-margin:hover {
+    background-color: #f3f4f6;
+}
+
+.size-btn-margin:active {
+    background-color: #1a47a1;
+    transform: scale(0.96);
+}
+
+
+
+
+
+.product-details-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+/* Ana kart */
+.product-card {
+    display: flex;
+    gap: 32px;
+    max-width: 960px;
+    width: 100%;
+    padding: 24px 28px;
+    background-color: #ffffff;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+    border-radius: 10px;
+    align-items: flex-start;
+}
+
+/* Sol: Görsel */
+.product-image-wrapper {
+    flex: 0 0 340px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-image {
+    width: 320px;
+    height: 320px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+/* Sağ: Bilgi alanı */
+.product-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.product-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 0;
+    color: #111827;
+}
+
+.product-description {
+    font-size: 0.95rem;
+    color: #4b5563;
+    line-height: 1.5;
+    margin-top: 6px;
+    margin-bottom: 4px;
+}
+
+/* Fiyat + Favori */
+.product-price-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.product-price {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.favorite-icon {
+    cursor: pointer;
+    width: 30px;
+    height: 25px;
+    transition: transform 0.15s ease;
+}
+
+.favorite-icon:hover {
+    transform: scale(1.06);
+}
+
+.favorite-icon-active {
+    color: red;
+}
+
+/* Beden seçimi (fiyatın hemen altında) */
+.product-sizes {
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.product-size-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+.size-btn {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.size-btn-margin {
+    border: 1px solid #e5e7eb;
+    background-color: #ffffff;
+    border-radius: 6px;
+    padding: 8px 14px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    min-width: 44px;
+    text-align: center;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+.size-btn-margin:hover {
+    border-color: #1976d2;
+    color: #1976d2;
+    transform: translateY(-1px);
+}
+
+.size-btn-margin.active {
+    background-color: #1976d2;
+    color: #ffffff;
+    border-color: #1976d2;
+}
+
+/* Adet + Sepete ekle */
+.product-actions-row {
+    margin-top: 18px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* QuantitySelector ve yanındaki adet yazısı */
+.quantity-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity-text {
+    font-size: 0.9rem;
+    color: #374151;
+}
+
+/* Sepete ekle butonu */
+.add-to-basket-btn {
+    border-radius: 9px !important;
+    min-width: 220px !important;
+    padding: 10px 16px !important;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .product-card {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-image-wrapper {
+        flex: 0 0 auto;
+    }
+
+    .product-info {
+        width: 100%;
+        align-items: flex-start;
+    }
+
+    .product-actions-row {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .add-to-basket-btn {
+        width: 100% !important;
+    }
+}

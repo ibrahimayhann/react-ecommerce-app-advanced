@@ -5,13 +5,17 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 import type { ProductType } from '../types/Types'
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 interface ProductCardProps {
     product: ProductType
 }
 
 function ProductCard(props: ProductCardProps) {
-    const { title, price, description, image } = props.product;
+    const { id, title, price, description, image } = props.product;
+
+    const navigate = useNavigate();
 
     return (
         <Card
@@ -91,7 +95,9 @@ function ProductCard(props: ProductCardProps) {
                     pt: 0,
                 }}
             >
-                <Button size="small" variant="outlined" color="info">
+                <Button
+                    onClick={() => navigate("/product-details/" + id)}
+                    size="small" variant="outlined" color="info">
                     Detay
                 </Button>
             </CardActions>

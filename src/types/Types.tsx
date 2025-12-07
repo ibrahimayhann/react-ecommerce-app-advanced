@@ -10,7 +10,9 @@ export interface ProductType {
     description: string,
     category: string,
     image: string,
-    rating: RatingType
+    rating: RatingType,
+    quantity: number,
+    size: string
 
 }
 interface RatingType {

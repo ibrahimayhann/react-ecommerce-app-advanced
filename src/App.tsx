@@ -5,13 +5,24 @@ import RouterConfig from './config/RouterConfig'
 import "react-toastify/dist/ReactToastify.css";
 import Spinner from './component/Spinner';
 import Navbar from './component/Navbar';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from './redux/store';
+import { useEffect } from 'react';
+import { calculateTotals } from './redux/basketSlice';
+import BasketDetails from './component/BasketDetails';
 
 
 function App() {
 
   const { currentUser } = useSelector((state: RootState) => state.app);
+
+  const { basketItems } = useSelector((state: RootState) => state.basket)
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {//sepet her güncellendiğinde hesaplamalar da güncellensin
+    dispatch(calculateTotals())
+  }, [basketItems, dispatch])
 
   return (
     <div>
@@ -24,6 +35,7 @@ function App() {
       <RouterConfig />
       <ToastContainer autoClose={2500} />
       <Spinner />
+      <BasketDetails />
     </div>
   )
 }
